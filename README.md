@@ -1,6 +1,6 @@
 # Project Setup Instructions
 
-⚠️ IMPORTANT — READ BEFORE STARTING
+IMPORTANT! — READ BEFORE STARTING
 
 Before running this system, please follow the steps below carefully.
 
@@ -13,7 +13,7 @@ You MUST:
    - `/admin/vendor`
    - `/user/vendor`
 
-⚠️ If the `vendor` folder is missing, the system will NOT run.
+If the `vendor` folder is missing, the system will NOT run!
 
 ## Step 2: Database Configuration
 - Open `config.php`
@@ -27,4 +27,4 @@ You MUST:
 - Do not modify files inside the `vendor` folder
 - The `vendor` folder contains required dependencies
 
-✔️ Setup completed successfully
+Setup completed successfully
