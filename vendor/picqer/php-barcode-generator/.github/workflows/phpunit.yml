@@ -1,4 +1,4 @@
-name: Static analysis (phpstan)
+name: Unit tests (phpunit)
 
 on:
   push:
@@ -10,6 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        php-versions: ['7.3', '7.4', '8.0', '8.1', '8.2']
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -19,11 +23,14 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 8.2
+        php-version: ${{ matrix.php-versions }}
         extensions: mbstring, gd, bcmath, imagick
+
+    - name: Validate composer.json
+      run: composer validate
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-interaction
 
-    - name: Run analysis
-      run: vendor/bin/phpstan --error-format=github --no-progress
+    - name: Run test suite
+      run: composer run-script test
